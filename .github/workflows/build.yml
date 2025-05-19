@@ -1,0 +1,31 @@
+name: Build AIX
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+
+      - name: Install Ant
+        run: sudo apt-get install -y ant
+
+      - name: Download App Inventor Sources
+        run: |
+          git clone https://github.com/mit-cml/appinventor-sources.git
+          mkdir -p appinventor-sources/appinventor/components/src/com/example/base64fileencoder
+          cp -r src/com/example/base64fileencoder/*.java appinventor-sources/appinventor/components/src/com/example/base64fileencoder/
+          cp build.xml appinventor-sources/appinventor/components/
+          cd appinventor-sources/appinventor/components
+          ant extensions
+          mkdir -p ../../../../build_output
+          cp build/extensions/*.aix ../../../../build_output
