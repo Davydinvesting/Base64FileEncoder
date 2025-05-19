@@ -1,0 +1,4 @@
+<project name="Base64FileEncoder" basedir=".">
+    <property name="aix.file" value="Base64FileEncoder.aix"/>
+    <property name="main.class" value="com.example.base64fileencoder.Base64FileEncoder"/>
+</project>
