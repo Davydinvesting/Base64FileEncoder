@@ -1,11 +1,10 @@
 <project name="Base64FileEncoder" basedir=".">
-
   <property name="aix.file" value="Base64FileEncoder.aix"/>
   <property name="main.class" value="com.example.base64fileencoder.Base64FileEncoder"/>
 
-  <target name="extensions">
+  <target name="build">
     <mkdir dir="build/classes"/>
-    <javac srcdir="src" destdir="build/classes" includeantruntime="false" debug="true"/>
+    <javac srcdir="src" destdir="build/classes" includeantruntime="false"/>
     <mkdir dir="build/extensions"/>
     <jar destfile="build/extensions/${aix.file}" basedir="build/classes">
       <manifest>
@@ -14,5 +13,4 @@
       </manifest>
     </jar>
   </target>
-
 </project>
