@@ -26,6 +26,6 @@ jobs:
           cp -r src/com/example/base64fileencoder/*.java appinventor-sources/appinventor/components/src/com/example/base64fileencoder/
           cp build.xml appinventor-sources/appinventor/components/
           cd appinventor-sources/appinventor/components
-          ant extensions
+          ant build
           mkdir -p ../../../../build_output
           cp build/extensions/*.aix ../../../../build_output
