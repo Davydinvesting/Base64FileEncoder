@@ -19,13 +19,12 @@ jobs:
       - name: Install Ant
         run: sudo apt-get install -y ant
 
-      - name: Download App Inventor Sources
+      - name: Compile Extension
         run: |
-          git clone https://github.com/mit-cml/appinventor-sources.git
-          mkdir -p appinventor-sources/appinventor/components/src/com/example/base64fileencoder
-          cp -r src/com/example/base64fileencoder/*.java appinventor-sources/appinventor/components/src/com/example/base64fileencoder/
-          cp build.xml appinventor-sources/appinventor/components/
-          cd appinventor-sources/appinventor/components
           ant build
-          mkdir -p ../../../../build_output
-          cp build/extensions/*.aix ../../../../build_output
+
+      - name: Upload AIX
+        uses: actions/upload-artifact@v3
+        with:
+          name: Base64FileEncoder
+          path: build/extensions/Base64FileEncoder.aix
