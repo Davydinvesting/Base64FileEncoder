@@ -24,7 +24,7 @@ jobs:
           ant build
 
       - name: Upload AIX
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: Base64FileEncoder
           path: build/extensions/Base64FileEncoder.aix
